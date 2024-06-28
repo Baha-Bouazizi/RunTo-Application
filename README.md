@@ -10,23 +10,23 @@ The main idea of the RunTo application is to help users find running clubs and r
 
 1. **User Login and Registration**
    - Users can create an account and log in to access the application's features.
-   - **Screenshot Placeholder**
+  
 
 2. **View Clubs and Races**
    - All users can view a list of available running clubs and races.
-   - **Screenshot Placeholder**
+
 
 3. **Admin Management**
    - Administrators can modify and delete clubs and races.
-   - **Screenshot Placeholder**
+   
 
 4. **View Runners**
    - Users can view other runners in the application and modify their own profile.
-   - **Screenshot Placeholder**
+   
 
 5. **Find Clubs by Location**
    - The application uses the user's IP address to find clubs in their region when accessing the home page, even without a search query.
-   - **Screenshot Placeholder**
+   
 
 ## Future Enhancements
 
@@ -52,7 +52,7 @@ Thank you for your interest in the RunTo application!
 
 1. **User Login and Registration**
    - ![Login and Registration](screenshots/login.png)
-  - ![Login and Registration](screenshots/signup.png)
+   - ![Login and Registration](screenshots/signup.png)
 2. **View Clubs and Races**
    - ![View Clubs and Races](screenshots/clubs.png)
 
