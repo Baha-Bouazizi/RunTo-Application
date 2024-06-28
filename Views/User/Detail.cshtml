@@ -1,0 +1,77 @@
+﻿@model RunTo.ViewModel.UserDetailViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .profile-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .profile-image img {
+                max-width: 200px;
+                border-radius: 50%;
+                border: 4px solid #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+        .user-info {
+            text-align: center;
+        }
+
+            .user-info p {
+                margin-bottom: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+
+        <div class="profile-image">
+            @if (!string.IsNullOrEmpty(Model.ProfileImageUrl))
+            {
+                <img src="@Model.ProfileImageUrl" alt="Profile Image" />
+            }
+            else
+            {
+                <img src="/images/default-profile-image.png" alt="Default Profile Image" />
+            }
+        </div>
+
+        <div class="user-info">
+            <p><strong>Username:</strong> @Model.UserName</p>
+            <p><strong>Pace:</strong> @Model.Pace</p>
+            <p><strong>Mileage:</strong> @Model.mileage</p>
+            <!-- Add more user details as needed -->
+        </div>
+    </div>
+</body>
+</html>

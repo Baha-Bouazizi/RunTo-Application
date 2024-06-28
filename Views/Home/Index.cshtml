@@ -1,0 +1,241 @@
+﻿@using RunTo.Data.Enum
+@using RunTo.ViewModel
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RunTo</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: floralwhite
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-section, .documentation-section {
+            width: 100%;
+            padding: 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blogs.bmj.com/bjsm/files/2017/08/running-sunset.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+        }
+
+            .hero-section h1 {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1.5rem;
+            }
+
+        .card {
+            width: 90%;
+            max-width: 300px;
+            height: auto;
+            background: url('https://example.com/card-background.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            overflow: hidden;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card img {
+                width: 100%;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+
+        .card-footer {
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .btn-outline-secondary {
+            color: white;
+            border-color: white;
+        }
+
+            .btn-outline-secondary:hover {
+                background-color: white;
+                color: black;
+            }
+
+        .documentation-section {
+            background-color: powderblue;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+            .documentation-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .documentation-section p {
+                font-size: 1.2rem;
+                color: #29292c;
+            }
+
+            .documentation-section .lead {
+                font-size: 1.5rem;
+            }
+
+        .intermediate-section {
+            background-color: powderblue;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+            .intermediate-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .intermediate-section .card {
+                max-width: none;
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .intermediate-section .card-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .intermediate-section p {
+                font-size: 1.2rem;
+                color: #29292c;
+            }
+
+            .documentation-section p {
+                font-size: 1.2rem;
+                color: #29292c;
+            }
+
+            .intermediate-section .lead {
+                font-size: 1.5rem;
+            }
+
+        .text-dark {
+            color: black; /* Utilisation du noir pour la couleur du texte */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-md-8">
+                    <h1 class="display-3">Find Your Running Group</h1>
+                    <p class="lead">Join a community of passionate runners. Ready to find your accountability partner?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intermediate Section -->
+    <section class="intermediate-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Discover the Thrill of Running Together</h2>
+                    <p class="lead">Explore the benefits of joining a running club. Whether you're looking to improve your fitness, meet new friends, or just enjoy the outdoors, RunTo has something for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs Section -->
+    <section>
+        <div class="container-fluid">
+            @if (Model.Clubs == null)
+            {
+                <h1 class="fw-light text-center">
+                    There are no running clubs in your area! <a asp-area="" asp-controller="Account"
+                                                                asp-action="Login">Login</a> and create one!
+                </h1>
+            }
+            else
+            {
+                <div class="row justify-content-center mb-5">
+                    <div class="col-auto">
+                        <h3 class="text-dark">Running clubs near @Model.City, @Model.State</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    @foreach (var item in Model.Clubs)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+                            <div class="card h-100">
+                                <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id">
+                                    <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                                </a>
+                                <div class="card-body">
+                                    <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id">
+                                        <h4 class="card-title">@item.Title</h4>
+                                    </a>
+                                    <p class="card-text text-body">@item.Description</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section class="documentation-section">
+        <div class="container-fluid">
+            <h2 color>What We Offer</h2>
+            <p>RunTo offers you the opportunity to discover local running clubs and connect with fellow runners in your area. Our platform facilitates finding running groups, discovering new routes, and enjoying the sport together. Whether you're a seasoned runner or just starting out, you'll find the support and motivation you need to keep going. Join us today and take the first step towards a healthier, more active lifestyle.</p>
+        </div>
+    </section>
+
+    <!-- Optional: JavaScript -->
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

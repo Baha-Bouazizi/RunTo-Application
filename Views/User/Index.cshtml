@@ -1,0 +1,69 @@
+﻿@using RunTo.ViewModel
+@model List<UserViewModel>
+
+@{
+    ViewData["Title"] = "User Profiles";
+}
+
+@* Import Bootstrap CSS (assurez-vous que vous avez lié Bootstrap dans votre _Layout.cshtml ou directement dans cette vue si nécessaire) *@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<style>
+    /* Ajoutez vos styles personnalisés ici si nécessaire */
+    body {
+        background-color: #f8f9fa; /* Couleur de fond pour le contraste */
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour la carte */
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: #f8f9fa; /* Couleur d'arrière-plan pour l'en-tête de la carte */
+        border-bottom: 1px solid #dee2e6; /* Bordure inférieure légère */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .profile-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <img src="@user.ProfileImageUrl" alt="Profile Image" class="profile-img">
+                            <h5 class="mb-0">@user.UserName</h5>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Mileage:</strong> @(user.mileage != null ? user.mileage.ToString() : "N/A") mile</p>
+                        <p><strong>Pace:</strong> @(user.Pace != null ? user.Pace.ToString() : "N/A") mph</p>
+                        <a href="@Url.Action("Detail", "User", new { id = user.Id })" class="btn btn-primary btn-sm mr-2">View Profile</a>
+                        @if (User.Identity.IsAuthenticated && User.Identity.Name == user.UserName)
+                        {
+                            <a href="@Url.Action("EditProfile", "User", new { id = user.Id })" class="btn btn-secondary btn-sm">Edit Profile</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@* Facultatif: importation du script Bootstrap JS pour les fonctionnalités supplémentaires *@
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+pyR6bE9WRZ/C6ekxu8/abFcJhGci4vf/t4" crossorigin="anonymous"></script>
