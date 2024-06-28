@@ -61,3 +61,4 @@ Thank you for your interest in the RunTo application!
 
 4. **Find Clubs by Location**
    - ![Find Clubs by Location](screenshots/area.png)
+   - - ![Find Clubs by Location](screenshots1/snad.png)
