@@ -56,5 +56,9 @@ Thank you for your interest in the **RunTo** application!
 ![View Runners](screenshots/runners.png)
 
 ### Find Clubs by Location
-![Find Clubs by Location](screenshots/area.png)
-![Find Clubs by Location](screenshots1/snad.png)
+
+#### Location: Tunis
+![Find Clubs by Location in Tunis](screenshots/area.png)
+
+#### Location: Snad, Gafsa
+![Find Clubs by Location in Snad, Gafsa](screenshots1/snad.png)
