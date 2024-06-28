@@ -1,0 +1,12 @@
+# Assure que tous les fichiers texte utilisent LF comme fin de ligne
+* text=auto
+
+# Spécifie les fins de ligne pour certains types de fichiers
+*.css text eol=lf
+*.js text eol=lf
+
+# Gère les fichiers binaires
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary
