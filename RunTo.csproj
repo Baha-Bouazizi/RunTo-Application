@@ -21,4 +21,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="screenshots\signup.png">
+      <CopyToOutputDirectory>sign</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
