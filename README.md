@@ -49,8 +49,10 @@ Thank you for your interest in the **RunTo** application!
 ![Login](screenshots/login.png)
 ![Sign Up](screenshots/signup.png)
 
-### View Clubs and Races
+### View Clubs 
 ![View Clubs](screenshots/clubs.png)
+### View  Races
+![View Clubs](screenshots/races.png)
 
 ### View Runners
 ![View Runners](screenshots/runners.png)
